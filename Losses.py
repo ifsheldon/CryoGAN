@@ -29,6 +29,7 @@ class StarGANLoss(object):
         :return: loss => calculated loss Tensor
         """
         out = self.dis()
+        # FIXME: dangling pointer
         d_loss_real = adv_loss(out, 1)
         d_loss_reg = r1_reg(out, x_real)
 
