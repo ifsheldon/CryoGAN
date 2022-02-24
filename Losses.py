@@ -1,9 +1,7 @@
 """ Module implementing various loss functions """
 
-import torch as th
 import torch
-
-
+import torch as th
 
 
 # =============================================================
@@ -30,23 +28,23 @@ class StarGANLoss(object):
         :param alpha: current value of the fader alpha
         :return: loss => calculated loss Tensor
         """
-        out=self.dis()d_loss_real = adv_loss(out, 1)
-            d_loss_reg = r1_reg(out, x_real)
-        raise NotImplementedError("dis_loss method has not been implemented")
+        out = self.dis()
+        d_loss_real = adv_loss(out, 1)
+        d_loss_reg = r1_reg(out, x_real)
 
-    def gen_loss(self, real_samps, fake_samps, height, alpha):
-        """
-        calculate the generator loss
-        :param real_samps: batch of real samples
-        :param fake_samps: batch of generated (fake) samples
-        :param height: current height at which training is going on
-        :param alpha: current value of the fader alpha
-        :return: loss => calculated loss Tensor
-        """
-        raise NotImplementedError("gen_loss method has not been implemented")
+    raise NotImplementedError("dis_loss method has not been implemented")
 
 
-
+def gen_loss(self, real_samps, fake_samps, height, alpha):
+    """
+    calculate the generator loss
+    :param real_samps: batch of real samples
+    :param fake_samps: batch of generated (fake) samples
+    :param height: current height at which training is going on
+    :param alpha: current value of the fader alpha
+    :return: loss => calculated loss Tensor
+    """
+    raise NotImplementedError("gen_loss method has not been implemented")
 
 
 class GANLoss(object):
@@ -182,11 +180,10 @@ class WGAN_GP(GANLoss):
 
         # return the calculated penalty:
         return penalty
-    
-    
-    def __stable_gradient_penalty(self, real_samps, fake_samps, height, alpha,  reg_lambda):
-    #print real_data.size()
-  
+
+    def __stable_gradient_penalty(self, real_samps, fake_samps, height, alpha, reg_lambda):
+        # print real_data.size()
+
         """
         private helper for calculating the gradient penalty
         :param real_samps: real samples
@@ -210,17 +207,17 @@ class WGAN_GP(GANLoss):
 
         # perform backward pass from op to merged for obtaining the gradients
         gradients = th.autograd.grad(outputs=op, inputs=merged,
-                                    grad_outputs=th.ones_like(op), create_graph=True,
-                                    retain_graph=True, only_inputs=True)[0]
+                                     grad_outputs=th.ones_like(op), create_graph=True,
+                                     retain_graph=True, only_inputs=True)[0]
 
-        gradients_norm = torch.sqrt(torch.sum(gradients ** 2, dim=1)  +1e-12     )
+        gradients_norm = torch.sqrt(torch.sum(gradients ** 2, dim=1) + 1e-12)
 
-            # Return gradient penalty
-        return  ((gradients_norm - 1) ** 2).mean()
+        # Return gradient penalty
+        return ((gradients_norm - 1) ** 2).mean()
 
     def dis_loss(self, real_samps, fake_samps, height, alpha, reg_lambda):
         # define the (Wasserstein) loss
-        
+
         fake_out = self.dis(fake_samps, height, alpha)
         real_out = self.dis(real_samps, height, alpha)
 
@@ -375,7 +372,7 @@ class CondStandardGAN(ConditionalGANLoss):
 class CondWGAN_GP(ConditionalGANLoss):
 
     def __init__(self, dis, drift=0.001, use_gp=False):
-        super( CondWGAN_GP, self).__init__(dis)
+        super(CondWGAN_GP, self).__init__(dis)
         self.drift = drift
         self.use_gp = use_gp
 
