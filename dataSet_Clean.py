@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import scipy
 import scipy.io
+from scipy import ndimage
 import torch.utils.data
 from torch.utils.data.dataset import Dataset
 from torch import Tensor
@@ -115,7 +116,7 @@ class Cryo(Dataset):
                 with mrcfile.open(self.ParticlePath + str(idx).zfill(6) + ".mrc") as m:
                     image = np.array(m.data, dtype=np.float32)
                 if self.args.GaussianFilterProjection:
-                    image = scipy.ndimage.gaussian_filter(image, self.args.GaussianSigma, )
+                    image = ndimage.gaussian_filter(image, self.args.GaussianSigma, )
 
                 image = Tensor(image).unsqueeze(0).cuda()
 
