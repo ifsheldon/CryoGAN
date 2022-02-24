@@ -21,6 +21,8 @@ from .FunctionsSymmetry import *
 # %%
 
 
+# FIXME: dangling pointers: doPlots, CTFGeneratorSpatial, Support
+
 def CTFforward(h, x):
     paddingLength = h.size()[-1] // 2
 
