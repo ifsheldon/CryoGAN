@@ -4,7 +4,6 @@
 
 import shutil
 
-from Functions.Functions import *
 from Networks_Clean import *
 
 # temp timing
