@@ -38,7 +38,7 @@ class App(QWidget):
     def getChoice(self):
         items = ("Red", "Blue", "Green")
         item, okPressed = QInputDialog.getItem(self, "Get item", "Color:", items, 0, False)
-        if ok and item:
+        if okPressed and item:
             print(item)
 
     def getText(self):
