@@ -60,6 +60,7 @@ class ProGAN:
         data = get_data_loader(dataset, self.args.batch_size, num_workers=0)
 
         total_batches = len(iter(data))
+        print(f"{total_batches=}, {self.args.dis_iterations=}")
         epoch_gen_iterations = total_batches // (self.args.dis_iterations + 1)
         total_gen_iterations = epoch_gen_iterations * self.args.epochs
 
