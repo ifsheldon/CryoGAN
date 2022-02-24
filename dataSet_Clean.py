@@ -33,7 +33,6 @@ class Cryo(Dataset):
             self.numParticlesfromMicrograph = np.zeros((numMicroGraphs, 1))
             self.MicrographFromIdx = None
             self.CoordinateFromIdx = None
-            dir = './Datasets/Betagal-Experimental/'
 
             self.ParticlePath = './Datasets/Betagal-Experimental/Particles-384/'
             list = os.listdir(self.ParticlePath)
