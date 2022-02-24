@@ -2,15 +2,16 @@ import sys
 import time
 # temp timing
 from datetime import datetime
-from timeit import default_timer as timer
 from datetime import timedelta
+from timeit import default_timer as timer
+
+import mrcfile
+from torch import optim
+
 import dataSet_Clean as dataSet
 import libs.plot
-from Functions.Functions import weights_init
-from torch import optim
-import torch as th
+from Functions.Functions import weights_init, dis_loss, gen_loss
 from Networks_Clean import *
-import mrcfile
 
 plt.switch_backend('agg')
 

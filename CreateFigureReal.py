@@ -6,6 +6,7 @@ import time
 import mrcfile
 import scipy
 import scipy.io
+from scipy.ndimage import binary_dilation
 
 from Networks_Clean import *
 

@@ -6,10 +6,8 @@ import time
 import mrcfile
 import scipy
 import scipy.io
+from scipy.ndimage import binary_dilation
 
-from Functions.Functions import *
-from Functions.FunctionsCTF import *
-from Functions.FunctionsSaveImage import *
 from Networks_Clean import *
 
 plt.switch_backend('agg')

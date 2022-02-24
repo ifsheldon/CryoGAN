@@ -5,6 +5,7 @@ from Functions.FunctionsCTF import *
 from Functions.FunctionsDataset import *
 from Functions.FunctionsFourier import *
 from Functions.FunctionsSymmetry import *
+from torch import Tensor
 
 
 class VarphiGenerator(Dataset):
